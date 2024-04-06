@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrivero- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:03:52 by jrivero-          #+#    #+#             */
-/*   Updated: 2023/06/21 16:35:01 by mguardia         ###   ########.fr       */
+/*   Updated: 2024/04/06 10:34:08 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftlib.h"
-
-char	*stdin_to_file(void);
+#include "../inc/bsq.h"
 
 int	main(int argc, char *argv[])
 {

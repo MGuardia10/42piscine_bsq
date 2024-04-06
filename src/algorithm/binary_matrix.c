@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   binary_matrix.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguardia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:16:24 by mguardia          #+#    #+#             */
-/*   Updated: 2023/06/21 12:26:00 by mguardia         ###   ########.fr       */
+/*   Updated: 2024/04/06 10:50:43 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftlib.h"
+#include "../../inc/bsq.h"
 
 void	create_bin_matrix(int **b_matrix, char **i_matrix, int rows, char *file)
 {
@@ -47,10 +47,16 @@ int	**binary_matrix(char **i_matrix, int rows, char *file)
 	int	i;
 
 	cols = count_cols(file);
+	b_matrix = (int **) malloc((rows + 1) * sizeof(int *));
+	if (!b_matrix)
+		exit(EXIT_FAILURE);
 	i = -1;
-	b_matrix = (int **) malloc ((rows + 1) * sizeof(int *));
 	while (i++ < rows)
-		b_matrix[i] = (int *) malloc ((cols + 1) * sizeof(int));
+	{
+		b_matrix[i] = (int *) malloc((cols + 1) * sizeof(int));
+		if (!b_matrix[i])
+			(free_int_matrix(b_matrix, rows), exit(EXIT_FAILURE));
+	}
 	b_matrix[i] = NULL;
 	create_bin_matrix(b_matrix, i_matrix, rows, file);
 	return (b_matrix);

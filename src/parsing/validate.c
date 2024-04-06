@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jrivero- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 12:55:31 by jrivero-          #+#    #+#             */
-/*   Updated: 2023/06/20 12:46:29 by jrivero-         ###   ########.fr       */
+/*   Updated: 2024/04/06 10:34:48 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftlib.h"
+#include "../../inc/bsq.h"
 
 int	valid_fl(char *str, int len)
 {
@@ -34,7 +34,7 @@ int	valid_fl(char *str, int len)
 			return (-1);
 	}
 	return (total);
-}		
+}
 
 char	*first_lane(char *file, int *fd, int *len)
 {
@@ -45,22 +45,20 @@ char	*first_lane(char *file, int *fd, int *len)
 	while (read(*fd, &c, 1) == 1 && (*len)++ != -1)
 		if (c == '\n')
 			close(*fd);
-	str = (char *) malloc (*(len) * sizeof(char));
+	str = (char *)malloc(*(len) * sizeof(char));
+	if (!str)
+		exit(EXIT_FAILURE);
 	*fd = open(file, O_RDONLY);
 	i = 0;
 	while (i < *len - 1)
 	{
 		read(*fd, &c, 1);
-		str[i] = c;
-		i++;
+		str[i++] = c;
 	}
 	str[i] = '\0';
 	*len = valid_fl(str, *len - 1);
 	if (*len <= 0)
-	{
-		free(str);
-		return (NULL);
-	}
+		return (free(str), NULL);
 	return (str);
 }
 
@@ -76,8 +74,7 @@ int	other_lanes(int fd, int len, char *s, int i)
 		col = 0;
 	while (read(fd, &c, 1) == 1)
 	{
-		if (i >= len || ((c != s[slen - 2]
-					&& c != s[slen - 3]) && c != '\n'))
+		if (i >= len || ((c != s[slen - 2] && c != s[slen - 3]) && c != '\n'))
 			return (-1);
 		if (c == '\n')
 		{
@@ -103,7 +100,7 @@ int	ft_validate_file(char *file, int *rows)
 	len = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		return (ft_print_error());
+		return (-1);
 	str = first_lane(file, &fd, &len);
 	if (str == NULL)
 		return (-1);

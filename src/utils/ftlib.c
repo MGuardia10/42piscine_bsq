@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ftlib.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguardia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 19:18:35 by mguardia          #+#    #+#             */
-/*   Updated: 2023/06/21 16:32:53 by mguardia         ###   ########.fr       */
+/*   Updated: 2024/04/06 10:46:55 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftlib.h"
+#include "../../inc/bsq.h"
 
 int	ft_strlen(char *str)
 {
@@ -25,17 +25,9 @@ int	ft_strlen(char *str)
 void	ft_putstr(char *str, int cont, int argc)
 {
 	while (*str)
-	{
-		write(1, str, 1);
-		str++;
-	}
+		write(1, str++, 1);
 	if (cont != argc - 1)
 		write(1, "\n", 1);
-}
-
-int	ft_print_error(void)
-{
-	return (-1);
 }
 
 int	count_cols(char *file)
@@ -43,13 +35,13 @@ int	count_cols(char *file)
 	int		col;
 	int		fd;
 	char	buffer;
-	int		aux;
 
 	col = 0;
-	aux = 0;
 	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		exit(EXIT_FAILURE);
 	while (read(fd, &buffer, 1) > 0 && buffer != '\n')
-		aux++;
+		;
 	while (read(fd, &buffer, 1) > 0 && buffer != '\n')
 		col++;
 	close(fd);

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   numeric_square.c                                   :+:      :+:    :+:   */
+/*   numeric_matrix.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguardia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 11:59:01 by mguardia          #+#    #+#             */
-/*   Updated: 2023/06/21 11:59:30 by mguardia         ###   ########.fr       */
+/*   Updated: 2024/04/06 11:01:49 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftlib.h"
+#include "../../inc/bsq.h"
 
 int	min(int up, int left, int diag)
 {
@@ -58,10 +58,16 @@ int	**numeric_matrix(int **b_matrix, int rows, int cols)
 	int	**n_matrix;
 	int	i;
 
-	i = -1;
 	n_matrix = (int **) malloc ((rows + 1) * sizeof(int *));
+	if (!n_matrix)
+		exit(EXIT_FAILURE);
+	i = -1;
 	while (i++ < rows)
+	{
 		n_matrix[i] = (int *) malloc ((cols + 1) * sizeof(int));
+		if (!n_matrix[i])
+			(free_int_matrix(n_matrix, rows), exit(EXIT_FAILURE));
+	}
 	n_matrix[i] = NULL;
 	create_num_matrix(n_matrix, b_matrix, rows, cols);
 	return (n_matrix);

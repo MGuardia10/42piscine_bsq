@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   find_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguardia <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mguardia <mguardia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 16:19:24 by mguardia          #+#    #+#             */
-/*   Updated: 2023/06/21 17:23:44 by mguardia         ###   ########.fr       */
+/*   Updated: 2024/04/06 10:34:24 by mguardia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ftlib.h"
+#include "../../inc/bsq.h"
 
 void	find_max_value(int **num_matrix, int rows, int cols, int *params)
 {
