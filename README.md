@@ -3,6 +3,7 @@
 42 Piscine final project. BSQ aims to find the largest possible square within a map with obstacles and empty spaces.
 
 ![C](https://img.shields.io/badge/C-a?style=for-the-badge&logo=C&color=grey)
+![Makefile](https://img.shields.io/badge/Makefile-a?style=for-the-badge&logo=monster&logoColor=orange&color=grey)
 
 You can see the subject [**HERE.**](https://github.com/MGuardia10/42cursus/blob/main/subjects/en/bsq_subject_en.pdf)
 
